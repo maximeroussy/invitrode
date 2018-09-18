@@ -21,10 +21,9 @@ Here's a simple Android app built with the library that demonstrates it's usage:
 <a href="https://github.com/maximeroussy/invitrode/blob/master/android-demo.gif"><img src="/android-demo.gif" align="center" height="500"></a>
 </p>
 
-This demo app is available on [Google Play](https://play.google.com/store/apps/details?id=com.maximeroussy
-.invitrodeandroid).
+This demo app is available on [Google Play](https://play.google.com/store/apps/details?id=com.maximeroussy.invitrodeandroid).
 
-##Usage
+## Usage
 Using the library is extremely simple.
 
 ```java
