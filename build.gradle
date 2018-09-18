@@ -1,0 +1,101 @@
+def versionMajor = 2
+def versionMinor = 0
+def versionPatch = 1
+group = 'com.maximeroussy.invitrode'
+version = "${versionMajor}.${versionMinor}.${versionPatch}"
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.pholser:junit-quickcheck-core:0.8.1'
+    implementation 'com.pholser:junit-quickcheck-generators:0.8.1'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name 'The MIT License'
+            url 'https://opensource.org/licenses/MIT'
+            distribution 'repo'
+        }
+    }
+    developers {
+        developer {
+            id 'maximeroussy'
+            name 'Maxime Roussy'
+            email 'roussy.maxime@gmail.com'
+        }
+    }
+
+    scm {
+        url 'https://github.com/maximeroussy/invitrode'
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId 'com.maximeroussy.invitrode'
+            artifactId 'invitrode'
+            version "${versionMajor}.${versionMinor}.${versionPatch}"
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'A Java library to generate random english pronounceable words.')
+                root.appendNode('name', 'invitrode')
+                root.appendNode('url', 'https://github.com/maximeroussy/invitrode')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+    publications = ['mavenJava']
+    pkg {
+        repo = 'maven'
+        name = 'invitrode'
+        version {
+            name = "${versionMajor}.${versionMinor}.${versionPatch}"
+        }
+    }
+}
