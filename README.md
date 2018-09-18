@@ -2,7 +2,8 @@
 
 A Java/Android library to generate random english pronounceable words based on a collection of constructed bi-grams.
 
-[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/maximeroussy/invitrode/license.md)
+[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/maximeroussy/invitrode/license
+.md)![CI Build](https://travis-ci.com/maximeroussy/invitrode.svg?branch=master)
 
 
 ## Summary
