@@ -2,7 +2,7 @@
 
 A Java/Android library to generate random english pronounceable words based on a collection of constructed bi-grams.
 
-[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/maximeroussy/invitrode/license.md)![CI Build](https://travis-ci.com/maximeroussy/invitrode.svg?branch=master)[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/maximeroussy/invitrode)[![Download](https://api.bintray.com/packages/maximeroussy/maven/invitrode/images/download.svg) ](https://bintray.com/maximeroussy/maven/invitrode/_latestVersion)
+[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/maximeroussy/invitrode/license.md) ![CI Build](https://travis-ci.com/maximeroussy/invitrode.svg?branch=master) [![GitHub release](https://img.shields.io/github/release/maximeroussy/invitrode.svg)](https://GitHub.com/maximeroussy/invitrode/releases/)
 
 ## Summary
 This is a lightweight and focused library. There's a single class with only a single public method that's accessible.
@@ -42,6 +42,10 @@ compile 'com.maximeroussy.invitrode:invitrode:2.0.1'
   <type>pom</type>
 </dependency>
 ```
+
+### Manual
+
+You can grab the jar for the [latest release](https://github.com/maximeroussy/invitrode/releases) to include in your project manually.
 
 ## Usage
 Using the library is extremely simple.
