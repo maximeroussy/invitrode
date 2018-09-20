@@ -2,8 +2,7 @@
 
 A Java/Android library to generate random english pronounceable words based on a collection of constructed bi-grams.
 
-[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/maximeroussy/invitrode/license.md)![CI Build](https://travis-ci.com/maximeroussy/invitrode.svg?branch=master)
-
+[![MIT License](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/maximeroussy/invitrode/license.md)![CI Build](https://travis-ci.com/maximeroussy/invitrode.svg?branch=master)[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/maximeroussy/invitrode)[![Download](https://api.bintray.com/packages/maximeroussy/maven/invitrode/images/download.svg) ](https://bintray.com/maximeroussy/maven/invitrode/_latestVersion)
 
 ## Summary
 This is a lightweight and focused library. There's a single class with only a single public method that's accessible.
@@ -23,11 +22,33 @@ Here's a simple Android app built with the library that demonstrates it's usage:
 
 This demo app is available on [Google Play](https://play.google.com/store/apps/details?id=com.maximeroussy.invitrodeandroid).
 
+## Download/Install
+The library is available through jCenter, which is included in your repositories by default on Android. For a Java 
+project, make sure you have jCenter added to your repositories.
+
+### Gradle (preferred):
+
+```gradle
+compile 'com.maximeroussy.invitrode:invitrode:2.0.1'
+```
+
+### Maven:
+
+```xml
+<dependency>
+  <groupId>com.maximeroussy.invitrode</groupId>
+  <artifactId>invitrode</artifactId>
+  <version>2.0.1</version>
+  <type>pom</type>
+</dependency>
+```
+
 ## Usage
 Using the library is extremely simple.
 
 ```java
-   String myNewWord = WordGenerator.newWord(int lengthOfWord);
+WordGenerator generator = WordGenerator();
+String myNewWord = generator.newWord(int lengthOfWord);
 ```
 
 ## Inspiration & Credits
