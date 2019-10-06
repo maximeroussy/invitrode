@@ -57,7 +57,7 @@ String myNewWord = generator.newWord(int lengthOfWord);
 
 ## Inspiration & Credits
 Why the name Invitrode? Why make a random word generator? This should suffice:
-[https://www.youtube.com/watch?v=hsr-QfgFRh8](https://www.youtube.com/watch?v=hsr-QfgFRh8)
+[https://www.youtube.com/watch?v=FbccrO8qKog](https://www.youtube.com/watch?v=FbccrO8qKog)
 
 Bi-gram source and general concept based on [Scrollback's generate.js](https://github.com/scrollback/scrollback/blob/master/lib/generate.js)  & described in [this blog post](https://www.hackerearth.com/notes/random-pronouncable-text-generator/)  by Aravind. This is a Java adaptation that will be further developed as a functional and feature rich random word generator.
 
