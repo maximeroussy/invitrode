@@ -7,8 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitQuickcheck.class)
 public class WordGeneratorTest {
@@ -23,7 +22,7 @@ public class WordGeneratorTest {
     public void generatesWordsOfSpecifiedLength(@InRange(min = "3", max = "500") int wordLength) {
         String wordResult = sut.newWord(wordLength);
 
-        assertThat(wordResult.length(), is(wordLength));
+        assertEquals(wordResult.length(), wordLength);
     }
 
     @Test(expected = IllegalArgumentException.class)
