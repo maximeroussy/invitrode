@@ -7,23 +7,17 @@ version = "${versionMajor}.${versionMinor}.${versionPatch}"
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'java-library'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -80,19 +74,6 @@ publishing {
                 root.appendNode('url', 'https://github.com/maximeroussy/invitrode')
                 root.children().last() + pomConfig
             }
-        }
-    }
-}
-
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['mavenJava']
-    pkg {
-        repo = 'maven'
-        name = 'invitrode'
-        version {
-            name = "${versionMajor}.${versionMinor}.${versionPatch}"
         }
     }
 }
