@@ -1,18 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'java-library'
+
 def versionMajor = 2
 def versionMinor = 0
 def versionPatch = 2
-group = 'com.maximeroussy.invitrode'
-version = "${versionMajor}.${versionMinor}.${versionPatch}"
 
 buildscript {
     repositories {
         mavenCentral()
     }
 }
-
-apply plugin: 'java'
-apply plugin: 'java-library'
-apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
 
@@ -36,44 +33,57 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from 'build/docs/javadoc'
 }
 
-def pomConfig = {
-    licenses {
-        license {
-            name 'The MIT License'
-            url 'https://opensource.org/licenses/MIT'
-            distribution 'repo'
-        }
-    }
-    developers {
-        developer {
-            id 'maximeroussy'
-            name 'Maxime Roussy'
-            email 'roussy.maxime@gmail.com'
-        }
-    }
-
-    scm {
-        url 'https://github.com/maximeroussy/invitrode'
-    }
+artifacts {
+    archives javadocJar, sourcesJar
 }
+
+apply plugin: 'maven-publish'
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            from components.java
-            artifact sourcesJar
+            groupId = "com.maximeroussy.invitrode"
+            artifactId = 'invitrode'
+            version = "${versionMajor}.${versionMinor}.${versionPatch}"
             artifact javadocJar
-            groupId 'com.maximeroussy.invitrode'
-            artifactId 'invitrode'
-            version "${versionMajor}.${versionMinor}.${versionPatch}"
+            artifact sourcesJar
+            from components.java
 
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('description', 'A Java library to generate random english pronounceable words.')
-                root.appendNode('name', 'invitrode')
-                root.appendNode('url', 'https://github.com/maximeroussy/invitrode')
-                root.children().last() + pomConfig
+            pom {
+                name = 'invitrode'
+                packaging = 'jar'
+                description = "A Java library to generate random english pronounceable words."
+                url = 'https://github.com/maximeroussy/invitrode'
+
+                scm {
+                    connection = 'scm:git:git://github.com/maximeroussy/invitrode.git'
+                    developerConnection = 'scm:git:ssh://github.com:maximeroussy/invitrode.git'
+                    url = 'https://github.com/maximeroussy/invitrode/tree/master'
+                }
+
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'maximeroussy'
+                        name = 'Maxime Roussy'
+                        email = 'roussy.maxime@gmail.com'
+                    }
+                }
             }
         }
+    }
+}
+
+jar {
+    into("META-INF/maven/$project.group/$project.name") {
+        from { generatePomFileForMavenJavaPublication }
+        rename ".*", "pom.xml"
     }
 }
